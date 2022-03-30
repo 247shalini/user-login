@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import http from 'http';
-import router from './api/routes/v1/admin.js';
+import router from './api/routes/v1/index.js';
 import seeders from "./seeders/admin.js"
 dotenv.config();
 

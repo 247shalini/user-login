@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 
 // admin registration code 
-const adminRegister = async (req, res) => {
+export const adminRegister = async (req, res) => {
     const { firstname, lastname, email, password, address, city, country, state } = req.body
     // save the data in database of admin 
     await adminModel.create({
@@ -21,7 +21,7 @@ const adminRegister = async (req, res) => {
 }
 
 // get the data of admin user
-const adminRegisterAction = async (req, res) => {
+export const adminRegisterAction = async (req, res) => {
     try {
         // find the data of admin if its exist then data will show 
         const getData = await adminModel.find();
@@ -32,7 +32,7 @@ const adminRegisterAction = async (req, res) => {
 }
 
 // admin login code
-const adminLogin = async (req, res) => {
+export const adminLogin = async (req, res) => {
     try {
         return res.send('Successfully login')
     } catch (error) {
@@ -45,7 +45,7 @@ const adminLogin = async (req, res) => {
     }
 }
 
-const adminLoginAction = async (req, res) => {
+export const adminLoginAction = async (req, res) => {
 
     const { email } = req.body;
     const admin = await adminModel.findOne({ email });
@@ -62,7 +62,7 @@ const adminLoginAction = async (req, res) => {
     return res.status(200).send(`Successfully login ${ link }`)
 }
 
-const adminUpdate = async(req,res) => {
+export const adminUpdate = async(req,res) => {
     try {
         const updateAdmin = await adminModel.findByIdAndUpdate(req.params.id , req.body , {
             new : true
@@ -73,7 +73,7 @@ const adminUpdate = async(req,res) => {
     }
 }
 
-const adminDelete = async(req, res) => {
+export const adminDelete = async(req, res) => {
     try {
         const Admin = await adminModel.findByIdAndDelete(req.params.id);
         res.status(200).send(`Admin data deleted successfully - ${Admin}`);
@@ -82,13 +82,13 @@ const adminDelete = async(req, res) => {
     }
 }
 
-const AuthController = {
-    adminRegister,
-    adminRegisterAction,
-    adminLogin,
-    adminLoginAction,
-    adminUpdate,
-    adminDelete
-}
+// const AuthController = {
+//     adminRegister,
+//     adminRegisterAction,
+//     adminLogin,
+//     adminLoginAction,
+//     adminUpdate,
+//     adminDelete
+// }
 
-export default AuthController;
+// export default AuthController;

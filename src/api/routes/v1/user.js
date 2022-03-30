@@ -1,15 +1,13 @@
-import express from "express";
+import { Router } from "express";
 import  userController  from "../../controllers/userAuth.js";
+import { handleValidationErrors } from "../../middleware/adminValidation.js";
+import  { userRegisterValidation }  from "../../validators/userValidate.js";
+const userRouter = Router();
 
-const router = express.Router();
-
-router.post("/user" , userController.userRegister)
-router.get("/user" , userController.userRegisterAction)
+userRouter.post("/user" , userRegisterValidation, handleValidationErrors , userController.userRegister)
+userRouter.get("/user" , userController.userRegisterAction)
 
 // router.post("/userlogin", checkout ,AuthController.userLoginAction)
 // router.get("/userlogin", AuthController.userLogin)
 
-// router.put("/:id", AuthController.adminUpdate)
-// router.delete("/:id", AuthController.adminDelete)
-
-export default router;
+export default userRouter;

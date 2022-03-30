@@ -1,18 +1,18 @@
 import userModel from "../models/userModel.js";
-import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
-dotenv.config();
+// import dotenv from "dotenv";
+// import jwt from "jsonwebtoken";
+// dotenv.config();
 
 // admin registration code 
 const userRegister = async (req, res) => {
-    // const { firstname, lastname, email, password } = req.body
-    // // save the data in database of user 
-    // await userModel.create({
-    //     firstname,
-    //     lastname,
-    //     email,
-    //     password,
-    // });
+    const { firstname, lastname, email, password } = req.body
+    // save the data in database of user 
+    await userModel.create({
+        firstname,
+        lastname,
+        email,
+        password,
+    });
     return res.send("Successfully registered")
 }
 

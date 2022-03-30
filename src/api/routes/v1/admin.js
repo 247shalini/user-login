@@ -1,18 +1,18 @@
-import express from "express";
-import  AuthController  from "../../controllers/adminAuth.js";
+import { Router } from "express";
+import  { adminLogin , adminLoginAction , adminRegister, adminRegisterAction, adminDelete , adminUpdate}  from "../../controllers/adminAuth.js";
 import { handleValidationErrors } from "../../middleware/adminValidation.js";
 import  { adminRegisterValidation }  from "../../validators/validate.js";
 import { checkout }  from "../../validators/checkout.js";
 
-const router = express.Router();
+const adminRouter = Router();
 
-router.post("/register", adminRegisterValidation,handleValidationErrors ,AuthController.adminRegister)
-router.get("/register" ,AuthController.adminRegisterAction)
+adminRouter.post("/register", adminRegisterValidation,handleValidationErrors , adminRegister)
+adminRouter.get("/register" , adminRegisterAction)
 
-router.post("/login", checkout ,AuthController.adminLoginAction)
-router.get("/login", AuthController.adminLogin)
+adminRouter.post("/login", checkout , adminLoginAction)
+adminRouter.get("/login", adminLogin)
 
-router.put("/:id", AuthController.adminUpdate)
-router.delete("/:id", AuthController.adminDelete)
+adminRouter.put("/:id", adminUpdate)
+adminRouter.delete("/:id", adminDelete)
 
-export default router;
+export default adminRouter;
