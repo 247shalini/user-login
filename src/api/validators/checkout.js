@@ -1,11 +1,14 @@
 import adminModel from "../models/adminModel.js";
 
+/**
+ * checkout admin email and password exist or not
+ * */
 export const checkout = async (req, res, next) => {
     try {
 
-        const { email , password } = req.body;
+        const { email, password } = req.body;
         const user = await adminModel.findOne({ email });
-        if(!user){
+        if (!user) {
             return res.status(422).json({
                 success: false,
                 message:
@@ -16,14 +19,14 @@ export const checkout = async (req, res, next) => {
         if (user.email === email && user.password === password) {
             next();
         }
-        if(user.password !== password){
+        if (user.password !== password) {
             return res.status(422).send("Your Password is Incorrect !!");
         }
-        if(user.email !== email){
+        if (user.email !== email) {
             return res.status(422).send("Your Email is Incorrect !!");
         }
 
     } catch (error) {
         return res.status(422).send("User Details is Incorrect !!");
-      }
+    }
 } 

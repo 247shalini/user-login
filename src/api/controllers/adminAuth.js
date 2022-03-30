@@ -1,11 +1,17 @@
 import adminModel from "../models/adminModel.js";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+import message from "../../common/message.js"
+import { PaginatedData } from "../middleware/pagination.js"
 dotenv.config();
 
-// admin registration code 
+/** 
+ * admin registration code 
+ * @param { req, res }
+ * @returns JsonResponse
+ */
 export const adminRegister = async (req, res) => {
-    const { firstname, lastname, email, password, address, city, country, state } = req.body
+    const { firstname, lastname, email, password, address, city} = req.body
     // save the data in database of admin 
     await adminModel.create({
         firstname,
@@ -14,53 +20,48 @@ export const adminRegister = async (req, res) => {
         password,
         address,
         city,
-        country,
-        state,
     });
-    return res.send("Successfully registered")
+    return res.status(200).json(
+        { message: message.USER_REGISTRATION }
+    );
 }
 
-// get the data of admin user
-export const adminRegisterAction = async (req, res) => {
+/** 
+ * get the data of all register admin
+ * @param { req, res }
+ * @returns JsonResponse
+ */
+export const adminData = async (req, res) => {
     try {
-        // find the data of admin if its exist then data will show 
-        const getData = await adminModel.find();
-        res.status(200).send(getData);
+            const adminUser = await PaginatedData(req)
+            return res.status(200).json({
+                data: adminUser,
+            });
     } catch (error) {
-        res.status(401).send(error);
-    }
-}
-
-// admin login code
-export const adminLogin = async (req, res) => {
-    try {
-        return res.send('Successfully login')
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message:
-                "please create your account",
-            error: error
+        res.status(401).json({
+            message: message.DATA_NOT_FOUND
         });
     }
 }
 
+/** 
+ * login a admin and generate JWT token 
+ * @param { req, res }
+ * @returns JsonResponse
+ */
 export const adminLoginAction = async (req, res) => {
 
     const { email } = req.body;
     const admin = await adminModel.findOne({ email });
 
     // create JWT token code
-    const secret = `${process.env.JWT_SECRET}` + admin.password
-    const payLoad = {
-        email: admin.email,
-        id: admin.id
-    }
-    const token = jwt.sign(payLoad, secret, { expiresIn: '5m' })
-    const link = `${process.env.JWT_URL}/${admin.id}/${token}`
+    const token = jwt.sign({ email: admin.email }, process.env.JWT_SECRET , {
+        expiresIn: "2h"
+    });
 
-    return res.status(200).send(`Successfully login ${ link }`)
-}
+    return res.status(200).json({ message: message.LOGIN_SUCCESS, token: token });
+}  
+
 
 export const adminUpdate = async(req,res) => {
     try {
@@ -81,14 +82,3 @@ export const adminDelete = async(req, res) => {
         res.status(500).send(error);
     }
 }
-
-// const AuthController = {
-//     adminRegister,
-//     adminRegisterAction,
-//     adminLogin,
-//     adminLoginAction,
-//     adminUpdate,
-//     adminDelete
-// }
-
-// export default AuthController;

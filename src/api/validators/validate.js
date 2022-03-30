@@ -35,6 +35,4 @@ export const adminRegisterValidation = [
         .withMessage("Password must be greater than 5 and contain at least one uppercase letter one lowercase letter and one number"),
     body("address").trim().notEmpty().withMessage("Address is required").isLength({min : 20}).withMessage("Enter a proper address"),
     body("city").trim().notEmpty().withMessage("Enter a city name"),
-    body("country").trim().notEmpty().withMessage("Enter a country name"),
-    body("state").trim().notEmpty().withMessage("Enter a state name"),
 ];

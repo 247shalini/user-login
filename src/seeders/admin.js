@@ -1,5 +1,6 @@
 import adminModel from "../api/models/adminModel.js";
-// import bcryptjs from "bcryptjs";
+import { faker } from "@faker-js/faker";
+import bcryptjs from "bcryptjs";
 import admin from "../api/models/adminModel.js";
 
 const seedersAdmin = async () => {
@@ -9,16 +10,14 @@ const seedersAdmin = async () => {
       return;
     }
 
-     //Create admin login using faker
-      const adminUser = new Array(1).fill(0).map((_, index) => ({
-        firstname: "shalini",
-        lastname: "agrawal",
-        email: "shalini.a@chapter.com",
-        password: "Shalini@789", // Admin password 
-        address: "Shekhar central, 913-914, 9th Floor, AB Rd, Palasia Square, Indore, Madhya Pradesh 452001",
-        city: "Indore",
-        country: "India",
-        state : "Madhya Pradesh"
+    //Create admin login using faker
+      const adminUser = new Array(5).fill(0).map((_, index) => ({
+        firstname: faker.name.firstName(),
+        lastname: faker.name.lastName(),
+        email: faker.internet.email(),
+        password: bcryptjs.hashSync("password", 10), // static password 
+        address: faker.address.city(),
+        city: faker.address.city(),
     }))
 
     await admin.create(adminUser);

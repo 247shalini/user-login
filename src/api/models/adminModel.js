@@ -10,8 +10,6 @@ const AdminModelSchema = new Schema(
         password: { type: Schema.Types.String, required: true },
         address: { type: Schema.Types.String, required: true },
         city: { type: Schema.Types.String, required: true },
-        country: { type: Schema.Types.String, required: true },
-        state: { type: Schema.Types.String, required: true },
     },
 );
 
