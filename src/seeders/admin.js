@@ -15,7 +15,7 @@ const seedersAdmin = async () => {
         firstname: faker.name.firstName(),
         lastname: faker.name.lastName(),
         email: faker.internet.email(),
-        password: bcryptjs.hashSync("password", 10), // static password 
+        password: bcryptjs.hashSync("password", 10),
         address: faker.address.city(),
         city: faker.address.city(),
     }))

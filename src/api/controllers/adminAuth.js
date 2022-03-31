@@ -59,26 +59,21 @@ export const adminLoginAction = async (req, res) => {
         expiresIn: "2h"
     });
 
-    return res.status(200).json({ message: message.LOGIN_SUCCESS, token: token });
-}  
-
-
-export const adminUpdate = async(req,res) => {
-    try {
-        const updateAdmin = await adminModel.findByIdAndUpdate(req.params.id , req.body , {
-            new : true
+    return res.status(200).json({ 
+        message: message.LOGIN_SUCCESS, 
+        token: token 
     });
-        res.status(200).send(updateAdmin);
-    }catch(error){
-        res.status(500).send(error);
-    }
-}
+}  
 
 export const adminDelete = async(req, res) => {
     try {
         const Admin = await adminModel.findByIdAndDelete(req.params.id);
-        res.status(200).send(`Admin data deleted successfully - ${Admin}`);
+        res.status(200).json({
+            message: message.ADMIN_DATA_DELETED
+        });
     }catch(error){
-        res.status(500).send(error);
+        res.status(401).json({
+            message: message.ERROR_MESSAGE
+        });
     }
 }

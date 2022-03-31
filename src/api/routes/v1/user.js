@@ -8,5 +8,7 @@ userRouter.post("/user", userRegisterValidation, handleValidationErrors , userCo
 userRouter.get("/user", userController.userRegisterAction)
 
 userRouter.get("/userlogin", userController.userLogin)
+userRouter.post('/verify/:id',userController.emailVerify)
 
+userRouter.get("/verify/:id/:token",userController.emailVerifyAction)
 export default userRouter;

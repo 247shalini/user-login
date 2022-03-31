@@ -8,6 +8,10 @@ const message = {
     USER_NOT_REGISTERED: "User does not registered!",
     USER_REGISTRATION: "User Registration successfully!",
     EMAIL_ALREADY_EXISTS: "Email already exists please enter another email!",
+    EMAIL_NOT_MATCH: "This email address does not exists!",
+    VERIFY_SUCCESS:"successfully verify!",
+    ADMIN_DATA_DELETED:"Admin data deleted successfully ",
+    ERROR_MESSAGE: "Unexpected error occurred!",
 }
 
 export default message
