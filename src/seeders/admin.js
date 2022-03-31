@@ -16,7 +16,7 @@ const seedersAdmin = async () => {
         lastname: faker.name.lastName(),
         email: faker.internet.email(),
         password: bcryptjs.hashSync("password", 10),
-        address: faker.address.city(),
+        address: "Shekhar central, 913-914, 9th Floor, AB Rd, Palasia Square, Indore, Madhya Pradesh 452001",
         city: faker.address.city(),
     }))
 
