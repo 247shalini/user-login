@@ -8,6 +8,7 @@ const userModelSchema = new Schema(
         lastname: { type: Schema.Types.String, required: true },
         email: { type: Schema.Types.String, required: true },
         password: { type: Schema.Types.String, required: true },
+        userProfileImage: {type: Schema.Types.String, required:false, default:''},
     },
 );
 

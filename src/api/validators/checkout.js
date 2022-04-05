@@ -17,6 +17,7 @@ export const checkout = async (req, res, next) => {
             });
         }
         if (user.email === email && user.password === password) {
+            req.session.userId = user._id;
             next();
         }
         if (user.password !== password) {

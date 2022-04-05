@@ -136,12 +136,37 @@ const emailVerifyAction = async (req, res) => {
     }
 }
 
+/** 
+ * Update a profile image of user
+ * @param { req, res }
+ * @returns JsonResponse
+ */
+const userUploadFile = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { file } = req;
+
+        // find the id if user exist then update the profile image 
+        await userModel.findOneAndUpdate({ _id: id }, { userProfileImage: file.filename } , { new: true })
+
+        return res.status(200).json({
+            message: message.USER_FILE_UPDATE_SUCCESS
+        }); 
+
+    } catch (error) {
+        return res.status(500).json({
+            message: message.USER_NOT_FOUND
+        });
+    }
+};
+
 const userController = {
     userRegister,
     userRegisterAction,
     userLogin,
     emailVerify,
-    emailVerifyAction
+    emailVerifyAction,
+    userUploadFile
 }
 
 export default userController;
