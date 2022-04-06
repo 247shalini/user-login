@@ -38,10 +38,11 @@ import product from "../models/productModel.js";
         }
 
         return res.status(200).send(productList);
+
     } catch (error) {
         return res.status(500).json(
             {
-                message: message.ERROR_MESSAGE
+                message: message.NO_PRODUCTS_FOUND
             });
     }
 }
