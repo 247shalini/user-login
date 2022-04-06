@@ -7,6 +7,7 @@ const message = {
     DATA_NOT_FOUND: "Data not found !!",
     USER_NOT_REGISTERED: "User does not registered!!",
     USER_REGISTRATION: "User Registration successfully",
+    ADMIN_REGISTRATION: "Admin Registration successfully",
     EMAIL_ALREADY_EXISTS: "Email already exists please enter another email!",
     EMAIL_NOT_MATCH: "This email address does not exists!",
     VERIFY_SUCCESS:"successfully verify!",

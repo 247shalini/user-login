@@ -15,12 +15,14 @@ const userRegister = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // save the data in database of user 
-    await userModel.create({
+    const newUser = await userModel.create({
         firstname,
         lastname,
         email,
         password: hashedPassword,
     });
+
+    await newUser.save();
     return res.status(200).json(
         { message: message.USER_REGISTRATION }
     );
@@ -35,7 +37,9 @@ const userRegisterAction = async (req, res) => {
     try {
         // All data of user will show 
         const getData = await userModel.find();
-        res.status(200).send(getData);
+        return res.status(200).json({ 
+            user_data: getData 
+        });
     } catch (error) {
         return res.status(422).json(
             {

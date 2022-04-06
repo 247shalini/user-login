@@ -4,7 +4,6 @@ import productModel from "../models/productModel.js";
 /**
  * product Validations
  * */
-
 export const productValidation = [
     body("productName").not().isEmpty().withMessage("Enter a product name")
     .custom(async (value) => {

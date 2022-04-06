@@ -24,7 +24,7 @@ export const adminRegister = async (req, res) => {
         city,
     });
     return res.status(200).json(
-        { message: message.USER_REGISTRATION }
+        { message: message.ADMIN_REGISTRATION }
     );
 }
 

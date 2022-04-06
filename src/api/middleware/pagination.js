@@ -1,14 +1,14 @@
 import adminModel from "../models/adminModel.js"
 
-export const PaginatedData = async (req = {}) =>{
+export const PaginatedData = async (req = {}) => {
 
-    let {page, size} = req.body
+    let { page, size } = req.query
 
-    if(!page){
+    if (!page) {
         page = 1
     }
 
-    if(!size){
+    if (!size) {
         size = 5
     }
 
@@ -18,10 +18,13 @@ export const PaginatedData = async (req = {}) =>{
     try {
         results.results = await adminModel
             .find()
-            .limit(limit).skip(skip).exec()
-            console.log(results);
+            .limit(limit)
+            .skip(skip)
+            .exec()
         return results
-    } catch (e) {
-        console.log(e)
+    } catch (error) {
+        return res.status(401).json({
+            message: message.DATA_NOT_FOUND
+        });
     }
 }
