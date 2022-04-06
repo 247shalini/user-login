@@ -1,4 +1,5 @@
 import adminModel from "../models/adminModel.js";
+import bcrypt from "bcryptjs";
 
 /**
  * checkout admin email and password exist or not
@@ -16,13 +17,14 @@ export const checkout = async (req, res, next) => {
                 error: error
             });
         }
-        if (user.email === email && user.password === password) {
-            req.session.userId = user._id;
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        console.log(isMatch)
+
+        if(isMatch){
             next();
         }
-        if (user.password !== password) {
-            return res.status(422).send("Your Password is Incorrect !!");
-        }
+      
         if (user.email !== email) {
             return res.status(422).send("Your Email is Incorrect !!");
         }

@@ -12,7 +12,18 @@ const ProductModelSchema = new Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "category",
             required: true,
-        }
+        },
+        image: [
+            new Schema(
+                {
+                    files: {
+                        type: Schema.Types.String,
+                        required: true
+                    }
+                }
+            )
+        ]
+
     },
 );
 

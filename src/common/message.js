@@ -21,7 +21,8 @@ const message = {
     PRODUCT_ADD_SUCCESS:"Product add successfully",
     CATEGORY_ADD_SUCCESS:"Category add successfully",
     CATEGORY_NOT_FOUND:"Category not found !!",
-    NO_PRODUCTS_FOUND:"Product is not found !!"
+    NO_PRODUCTS_FOUND:"Product is not found !!",
+    AUTH_ERROR: "Auth-Error!",
 }
 
 export default message

@@ -1,6 +1,6 @@
 import adminModel from "../api/models/adminModel.js";
 import { faker } from "@faker-js/faker";
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcryptjs";
 import admin from "../api/models/adminModel.js";
 
 const seedersAdmin = async () => {
@@ -15,8 +15,8 @@ const seedersAdmin = async () => {
         firstname: faker.name.firstName(),
         lastname: faker.name.lastName(),
         email: faker.internet.email(),
-        password: bcryptjs.hashSync("password", 10),
-        uploadImage: faker.image.avatar(),
+        password: bcrypt.hashSync("password", 10),
+        profileImage: faker.image.avatar(),
         address: "Shekhar central, 913-914, 9th Floor, AB Rd, Palasia Square, Indore, Madhya Pradesh 452001",
         city: faker.address.city(),
     }))

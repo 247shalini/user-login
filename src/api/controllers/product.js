@@ -8,23 +8,33 @@ import categoryModel from "../models/categoryModel.js";
  * @returns JsonResponse
  */
 export const addProduct = async (req, res) => {
+
     const { productName, MRP, salePrice, description, category } = req.body
+    const productFiles = req.files;
     const category_id = await categoryModel.findById(category)
+    let image = [];
+
+    productFiles.map((data) => {
+        image.push({ files: data.filename })
+    })
 
     // if category_id exist then save the product in database of productModel 
     if (category_id) {
-        await productModel.create({
+        const productDetails = await product.create({
             productName,
             MRP,
             salePrice,
             description,
             category,
+            image,
         });
         return res.status(200).json(
             {
-                message: message.PRODUCT_ADD_SUCCESS
+                message: message.PRODUCT_ADD_SUCCESS,
+                product: productDetails
             });
     }
+
     // if category_id not found 
     return res.status(404).json(
         {
@@ -43,14 +53,14 @@ export const productAction = async (req, res) => {
         const { categories } = req.query
         let filter = {};
 
-        if(categories) {
+        if (categories) {
             filter = { category: categories.split(',') }
         }
 
         // categorywise data will show
-        const productList = await product.findOne(filter).populate('category');
+        const productList = await product.find(filter).populate('category');
 
-        if(!productList) {
+        if (!productList) {
             return res.status(404).json({
                 message: message.NO_PRODUCTS_FOUND
             })

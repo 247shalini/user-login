@@ -4,6 +4,7 @@ import { handleValidationErrors } from "../../middleware/handleValidation.js";
 import  { adminRegisterValidation }  from "../../validators/validate.js";
 import { checkout }  from "../../validators/checkout.js";
 import { upload } from "../../middleware/profileImage.js";
+import { tokenValidation } from "../../middleware/tokenValidation.js";
 
 const adminRouter = Router();
 
@@ -15,6 +16,6 @@ adminRouter.post("/login", checkout , adminLoginAction)
 adminRouter.put("/:id" , adminUpdate)
 adminRouter.delete("/:id", adminDelete)
 
-adminRouter.post("/profileImage/:id", upload.single("file"), uploadFile);
+adminRouter.post("/profileImage", tokenValidation, upload.single("file"), uploadFile);
 
 export default adminRouter;

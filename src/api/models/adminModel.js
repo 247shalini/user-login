@@ -8,7 +8,7 @@ const AdminModelSchema = new Schema(
         lastname: { type: Schema.Types.String, required: true },
         email: { type: Schema.Types.String, required: true },
         password: { type: Schema.Types.String, required: true },
-        profileImage: {type: Schema.Types.String, required:false, default:''},
+        profileImage: {type: Schema.Types.String, required:true, default:'none'},
         address: { type: Schema.Types.String, required: true },
         city: { type: Schema.Types.String, required: true },
     },
