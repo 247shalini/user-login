@@ -9,7 +9,6 @@ const message = {
     USER_REGISTRATION: "User Registration successfully",
     ADMIN_REGISTRATION: "Admin Registration successfully",
     EMAIL_ALREADY_EXISTS: "Email already exists please enter another email!",
-    EMAIL_NOT_MATCH: "This email address does not exists!",
     VERIFY_SUCCESS:"successfully verify!",
     ADMIN_DATA_DELETED:"Admin data deleted successfully ",
     ERROR_MESSAGE: "Unexpected error occurred!",
@@ -24,6 +23,8 @@ const message = {
     CATEGORY_NOT_FOUND:"Category not found !!",
     NO_PRODUCTS_FOUND:"Product is not found !!",
     AUTH_ERROR: "Auth-Error!",
+    CREATE_ACCOUNT: "please create your account !!",
+    USER_DETAILS_INCORRECT: "User Details is Incorrect !!"
 }
 
 export default message

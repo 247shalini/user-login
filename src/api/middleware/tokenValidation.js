@@ -14,7 +14,7 @@ export const tokenValidation = async (req, res, next) => {
         const { headers: { authorization }, } = req;
         const token = authorization.split(" ")[1];
         const { id } = await decode(token);
-        // console.log("check id in middleware", id)
+        
         const adminDetails = await adminModel.findById(id)
 
         if (!adminDetails) {

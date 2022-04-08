@@ -1,5 +1,6 @@
 import adminModel from "../models/adminModel.js";
 import bcrypt from "bcryptjs";
+import message from "../../common/message.js";
 
 /**
  * checkout admin email and password exist or not
@@ -12,24 +13,26 @@ export const checkout = async (req, res, next) => {
         if (!user) {
             return res.status(422).json({
                 success: false,
-                message:
-                    "please create your account",
+                message:message.CREATE_ACCOUNT,
                 error: error
             });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
-        console.log(isMatch)
 
         if(isMatch){
             next();
         }
       
         if (user.email !== email) {
-            return res.status(422).send("Your Email is Incorrect !!");
+            return res.status(422).json({
+                message: message.EMAIL_NOT_MATCH
+            });
         }
 
     } catch (error) {
-        return res.status(422).send("User Details is Incorrect !!");
+        return res.status(422).json({
+            message: message.USER_DETAILS_INCORRECT
+        });
     }
 } 
