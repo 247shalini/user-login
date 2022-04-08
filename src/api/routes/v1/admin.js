@@ -9,11 +9,11 @@ import { tokenValidation } from "../../middleware/tokenValidation.js";
 const adminRouter = Router();
 
 adminRouter.post("/register", adminRegisterValidation, handleValidationErrors , adminRegister)
-adminRouter.get("/data" , adminData)
+adminRouter.get("/data" , tokenValidation, adminData)
 
 adminRouter.post("/login", checkout , adminLoginAction)
 
-adminRouter.put("/:id" , adminUpdate)
+adminRouter.put("/:id" , tokenValidation, adminUpdate)
 adminRouter.delete("/:id", adminDelete)
 
 adminRouter.post("/profileImage", tokenValidation, upload.single("file"), uploadFile);

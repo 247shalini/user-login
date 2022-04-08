@@ -8,6 +8,7 @@ const ProductModelSchema = new Schema(
         MRP: { type: Schema.Types.Number, required: true },
         salePrice: { type: Schema.Types.Number, required: true },
         description: { type: Schema.Types.String, required: true },
+        rating: {type: Schema.Types.Number, required:true},
         category: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "category",

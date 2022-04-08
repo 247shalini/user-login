@@ -9,7 +9,7 @@ import categoryModel from "../models/categoryModel.js";
  */
 export const addProduct = async (req, res) => {
 
-    const { productName, MRP, salePrice, description, category } = req.body
+    const { productName, MRP, salePrice, description, rating, category } = req.body
     const productFiles = req.files;
     const category_id = await categoryModel.findById(category)
     let image = [];
@@ -25,6 +25,7 @@ export const addProduct = async (req, res) => {
             MRP,
             salePrice,
             description,
+            rating,
             category,
             image,
         });

@@ -11,8 +11,8 @@ userRouter.get("/userRegister", userController.userRegisterAction)
 
 userRouter.get("/userlogin", userController.userLogin)
 
-userRouter.post('/verify/:id',userController.emailVerify)
-userRouter.get("/verify/:id/:token",userController.emailVerifyAction)
+userRouter.post('/verify/:id', userController.emailVerify)
+userRouter.get("/verify/:id/:token", userController.emailVerifyAction)
 
 userRouter.post("/profileImage/:id", upload.single("file"), userController.userUploadFile);
 
