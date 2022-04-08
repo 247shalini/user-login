@@ -4,6 +4,7 @@ import { decode, encode } from '../../helpers/encode_decode_jwt.js';
 import message from "../../common/message.js";
 import { PaginatedData } from "../middleware/pagination.js";
 import adminModel from "../models/adminModel.js";
+import ordered from "../models/ordered.js";
 dotenv.config();
 
 /** 
@@ -138,3 +139,40 @@ export const uploadFile = async (req, res) => {
         });
     }
 };
+
+export const orderedList = async(req,res) => {
+    try {
+        // All data of user will show 
+        const orderList = await ordered.find();
+        return res.status(200).json({ 
+            order_Data : orderList 
+        });
+    } catch (error) {
+        return res.status(422).json(
+            {
+                message: message.NO_ORDERED_PRODUCT
+            });
+    }
+}
+
+export const orderedProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // show particular details of orderedProduct
+        const orderedProduct = await ordered.findOne({ _id: id });
+
+        if (!orderedProduct) {
+            return res.status(422).json({
+                errors: { message: message.NO_ORDERED_PRODUCT }
+            });
+        }
+        return res.status(200).json({
+            data: orderedProduct,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: message.ERROR_MESSAGE
+        })
+    }
+}

@@ -24,7 +24,22 @@ const message = {
     NO_PRODUCTS_FOUND:"Product is not found !!",
     AUTH_ERROR: "Auth-Error!",
     CREATE_ACCOUNT: "please create your account !!",
-    USER_DETAILS_INCORRECT: "User Details is Incorrect !!"
+    USER_DETAILS_INCORRECT: "User Details is Incorrect !!",
+
+    CATEGORY_ERROR: "Category doesn't add , Please try after some time",
+    CATEGORY_NOT_FOUND:"Category not found !",
+    CATEGORY_SUCCESS: "Category add successfilly",
+   
+    PRODUCT_GET_SUCCESS:"Get product successfully",
+    PRODUCT_SUCCESS: "PRODUCT add successfilly",
+    PRODUCT_ERROR: "PRODUCT doesn't add , Please try after some time",
+    PRODUCTS_NOT_FOUND:"Product not found",
+    
+    CART_PRODUCT_NOT_FOUND:"No product availabe for user in cart !",
+    PLACE_ORDER_SUCCESS:"Order placed successfully",
+    PLACE_ORDER_ERROR:"",
+    ERROR_MESSAGE: "Unexpected error occurred!",
+    NO_ORDERED_PRODUCT: "No order product !!"
 }
 
 export default message

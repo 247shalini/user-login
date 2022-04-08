@@ -1,0 +1,33 @@
+"{
+  _id: new ObjectId(""62501f35e2b9dbe733f0cd2f""),
+  userId: new ObjectId(""62443f80f6325e9cb1fe890a""),
+  shippingAddress: 'indore',
+  billingAddress: 'harda',
+  purchaseItems: [
+    {
+      productId: new ObjectId(""624ae49f85b6fecadcebdf9b""),
+      quantity: 2,
+      productPrice: 200,
+      _id: new ObjectId(""62501dd8e2b9dbe733f0cd2b"")
+    }
+  ],
+  totalAmount: '400',
+  paymentMode: 'cod',
+  __v: 0
+}","{
+  _id: new ObjectId(""625023b7da19aa4e460c2595""),
+  userId: new ObjectId(""6244574f0c82deed8174e566""),
+  shippingAddress: 'bhopal',
+  billingAddress: 'indore',
+  purchaseItems: [
+    {
+      productId: new ObjectId(""624c115485aba140eebefe60""),
+      quantity: 1,
+      productPrice: 120,
+      _id: new ObjectId(""625023adda19aa4e460c2591"")
+    }
+  ],
+  totalAmount: '120',
+  paymentMode: 'cod',
+  __v: 0
+}"
