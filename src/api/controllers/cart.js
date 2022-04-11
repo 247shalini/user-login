@@ -12,8 +12,9 @@ const cartAction = async (req, res) => {
     try {
         const { cartItems, user } = req.body
         const userId = await userModel.findById(user);
+        
+        //if user is not exist
         if (!userId) {
-            //if user is not exist
             // create a guest user  
             const userIds = await userModel.create({
                 firstName: "Guest",
@@ -95,7 +96,9 @@ const cartAction = async (req, res) => {
         });
     }
 }
+
 const cartController = {
     cartAction
 }
+
 export default cartController;

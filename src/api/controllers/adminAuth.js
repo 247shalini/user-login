@@ -140,6 +140,11 @@ export const uploadFile = async (req, res) => {
     }
 };
 
+/** 
+ * show all ordered list to admin
+ * @param { req, res }
+ * @returns JsonResponse
+ */
 export const orderedList = async(req,res) => {
     try {
         // All data of user will show 
@@ -155,6 +160,11 @@ export const orderedList = async(req,res) => {
     }
 }
 
+/** 
+ * show particular details of orderedProduct to admin
+ * @param { req, res }
+ * @returns JsonResponse
+ */
 export const orderedProduct = async (req, res) => {
     try {
         const { id } = req.params;
